@@ -1,0 +1,47 @@
+                          
+                                CONFIRMED LIST OF PARTICIPANTS 
+			
+			
+			
+                        Name : aditi
+			Phone : 1385785003
+			fee status : paid
+			Age : 18
+
+			Name : Anusha
+			Phone : 12345
+			fee status : paid
+			Age : 20
+
+                        Name : Anushka
+			Phone : 123456789
+			fee status : paid
+			Age : 19
+
+                        
+                        
+
+			
+			Name : Ayan
+			Phone : 9229768898
+			fee status : paid
+			Age : 15
+
+
+			Name : Navika
+			Phone : 9229835848
+			fee status : paid
+			Age : 10
+
+
+			Name : shrishti
+			Phone : 968647342
+			fee status : paid
+			Age : 18
+
+
+			Name : Anushka
+			Phone : 8989640061
+			fee status : paid
+			Age : 19
+

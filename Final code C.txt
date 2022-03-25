@@ -1,0 +1,345 @@
+#include <stdio.h>
+#include <conio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+struct node
+{
+    char fee[50];
+    char name[50];
+    char phone[20];
+    int age;
+    struct node *link;
+};
+struct node *first=NULL;
+void add()
+{
+    struct node *tmp,*cur;
+    tmp=(struct node*)malloc(sizeof(struct node));
+
+
+    printf("\n\t\t\tenter name :");
+    scanf("%s",&tmp->name);
+    printf("\t\t\tenter phone :");
+    scanf("%s",&tmp->phone);
+    printf("\t\t\tenter fee status :");
+    scanf("%s",&tmp->fee);
+    printf("\t\t\tenter age : ");
+    scanf("%d",&tmp->age);
+
+    if(first==NULL)
+    {
+        first=tmp;
+        tmp->link=NULL;
+    }
+
+    else
+    {
+        cur=first;
+        while(cur->link!=NULL)
+        {cur=cur->link;}
+         cur->link=tmp;
+         tmp->link=NULL;
+
+    }
+
+    FILE *fp;
+    fp=fopen("part.txt","a+");
+    if(fp=fopen("part.txt","a+"))
+    {
+    fprintf(fp,"\n\t\t\tName : %s\n\t\t\tPhone : %s\n\t\t\tfee status : %s\n\t\t\tAge : %d\n\n",tmp->name,tmp->phone,tmp->fee,tmp->age);
+    fclose(fp);
+    }
+    else
+       {
+       printf("file not found");
+        fclose(fp);
+       }
+
+}
+
+
+void game()
+{
+          char buf[20];
+          int ans;
+          int c=0;
+          int q;
+          printf("\n\t\t\tEnter name : ");
+          scanf("%s",&buf);
+
+
+        printf("******************* LET'S START ! SHALL WE ? *************************** \n\n");
+        printf("Q(1).Which movie holds the record for the second biggest box office opening of all time? \n 1.Avengers Endgame \t\t2.Spiderman:No Way Home\n 3.Avengers Infinity War\t4.Titanic\n\n");
+
+        printf("\t\tYour answer: ");
+        scanf("%d",&ans);
+
+        if(ans==2)
+        {
+            printf("\t\t\tCorrect! +5 points\n\n");
+            ++c;
+
+        }
+        else
+        {
+            printf("\t\t\tWrong answer! Correct answer is 2.Spiderman:No Way Home\n\n");
+        }
+
+        printf("Q(2)In 2019, Nobel Prize in Chemistry was given for which development? \n 1.For the development of Lithium-ion batteries.\t2.For developing synthetic protein.\n3.For developing cryoelectron microscopy.\t\t4.For developement of anti-isotron particle\n\n");
+        printf("\t\tYour answer: ");
+        scanf("%d",&ans);
+
+        if(ans==1)
+        {
+            printf("\t\t\tCorrect! +5 points\n\n");
+
+                ++c;
+
+        }
+        else
+        {
+            printf("\t\t\tWrong answer! Correct answer is 1.For development of Lithium-ion battries\n\n");
+        }
+
+        printf("Q(3) Who won the best animated feature film at the 93rd Academy Awards 2021? \n1.Onward\t2.Soul\n3.Spirited Away\t4.Boss Baby\n\n");
+
+        printf("\t\tYour answer: ");
+        scanf("%d",&ans);
+
+
+        if(ans==2)
+        {
+            printf("\t\t\tCorrect! +5 points\n\n");
+
+                ++c;
+        }
+        else
+        {
+            printf("\t\t\tWrong answer! Correct answer is 2.Soul\n\n");
+        }
+
+
+        printf("Q(4).Which Indian state became the first to reserve a government job for HIV positive candidates? \n1.Mizoram\t2.Kerela\n3.Tamil Nadu\t4.West Bengal\n\n");
+        printf("\t\tYour answer: ");
+        scanf("%d",&ans);
+        if(ans==2)
+        {
+            printf("\t\t\tCorrect! +5 points\n\n");
+
+                ++c;
+        }
+        else
+        {
+            printf("\t\t\tWrong answer! Correct answer is 2.Kerela\n\n");
+        }
+
+        printf("Q(5).Who is the first cricketer to hit six sixes in an over in ODI format? \n1.Kieron Pollard\t2.Yuvraj Singh\n3.Herschelle Gibbs\t4.Viv Richards\n\n");
+        printf("\t\tYour answer: ");
+        scanf("%d",&ans);
+        if(ans==3)
+        {
+            printf("\t\t\tCorrect! +5 points\n\n");
+
+                ++c;
+        }
+        else
+        {
+            printf("\t\t\tWrong answer! Correct answer is 3.Herchelle Gibbs\n\n");
+        }
+
+        printf("Q(6).Which of the following football clubs won FIFA World Cup 2020 \n1.Juventus F C\t\t2.F C Barcelona\n3.Manchester United\t4.Bayern Munich\n\n");
+        printf("\t\tYour answer: ");
+        scanf("%d",&ans);
+        if(ans==4)
+        {
+            printf("\t\t\tCorrect! +5 points\n\n");
+
+                ++c;
+        }
+        else
+        {
+            printf("\t\t\tWrong answer! Correct answer is 4.Bayern Munich\n\n");
+        }
+
+        printf("Q(7). Who won the Emmy's 2021 for outstanding production design (Half hour narrative)\n1.Emily in Paris\t\t2.WandaVision\n3.Ted Lasso:For the children\t4.Hacks:Primm\n\n");
+        printf("\t\tYour answer: ");
+        scanf("%d",&ans);
+        if(ans==2)
+        {
+            printf("\t\t\tCorrect! +5 points\n\n");
+
+                ++c;
+        }
+        else
+        {
+            printf("\t\t\tWrong answer! Correct answer is 2.Wandavision\n\n");
+        }
+
+        printf("Q(8). Under which President did USA withdraw from Paris climate agreement \n1.Bill Clinton\t\t2. George W Bush\n3.Donald Trump\t\t4. Joe Biden\n\n");
+        printf("\t\tYour answer: ");
+        scanf("%d",&ans);
+        if(ans==3)
+        {
+            printf("\t\t\tCorrect! +5 points\n\n");
+
+                ++c;
+        }
+        else
+        {
+            printf("\t\t\tWrong answer! Correct answer is 3.Donald Trump\n\n");
+        }
+
+        printf("Q(9).Which Indian organisation has developed near-isothermal forging technology for producing jet engine components?\n1.DRDO\t\t2.ISRO\n3.BARC\t\t4.HAL\n\n");
+        printf("\t\tYour answer: ");
+        scanf("%d",&ans);
+        if(ans==1)
+        {
+            printf("\t\t\tCorrect! +5 points\n\n");
+
+                ++c;
+        }
+        else
+        {
+            printf("\t\t\tWrong answer! Correct answer is 1.DRDO\n\n");
+        }
+
+        printf("Q(10). Which country is the latest country to sign the Artemis record with NASA ? \n1.New Zealand\t2.Australia\n3.France\t4.Canada\n\n");
+        printf("\t\tYour answer: ");
+        scanf("%d",&ans);
+        if(ans==1)
+        {
+            printf("\t\t\tCorrect! +5 points\n\n");
+
+                ++c;
+        }
+        else
+        {
+            printf("\t\t\tWrong answer! Correct answer is 1. New Zealand\n\n");
+        }
+
+
+        if (c>0)
+        {
+            printf("\n\t\t\tThanks for playing, You scored: %d points \t\n", c*5);
+             q=c*5;
+        }
+
+
+        if(q==50)
+        {
+         printf("\n\t\tCongrats !!! your name has been added to the list of billionaires !\n");
+         printf("\n\t\t\tPress 4 to view the list\n");
+
+
+        FILE *fp1;
+        fp1=fopen("win.txt","a+");
+
+        if(fp1!=NULL)
+
+           {
+
+            fprintf(fp1,"\n\t\t %s has won $1,000,000,000",buf);
+            fclose(fp1);
+        }
+     }
+        else
+            printf("\n\t\t\tBetter luck next time!\n");
+     }
+
+
+
+
+
+void display()
+{
+    FILE*fp3;
+    char c;
+    fp3=fopen("part.txt","r");
+    while(1)
+     {
+        c = fgetc(fp3);
+        if(c==EOF)
+            break;
+        else
+            printf("%c", c);
+     }
+     fclose(fp3);
+}
+
+void winners()
+{
+   FILE *fp1;
+    char c;
+    fp1=fopen("win.txt","r");
+    while(1)
+     {
+        c = fgetc(fp1);
+        if(c==EOF)
+            break;
+        else
+            printf("%c", c);
+     }
+     fclose(fp1);
+
+}
+
+
+void rule()
+{
+   FILE *fp1;
+    char c;
+    fp1=fopen("Rules.txt","r");
+    while(1)
+     {
+        c = fgetc(fp1);
+        if(c==EOF)
+            break;
+        else
+            printf("%c", c);
+     }
+     fclose(fp1);
+
+}
+
+
+
+int main()
+{
+
+   printf("\n\t\t****************************************");
+     printf("\n\t\t\t   WELCOME PARTICIPANTS !!! ");
+     printf("\n\t\t****************************************");
+     printf("\n\t\t****************************************");
+     printf("\n\t\t  CAN YOU BE THE NEXT BILLIONAIRE !?") ;
+     printf("\n\t\t****************************************\n\n");
+     printf("\n\n");
+     printf("\n\t\t***All participants are requested to abide by the ethics of fair play***\n\n\n");
+      while(1)
+    {
+     printf("\n\n\n");
+     printf("\n\t\t****************************************");
+     printf("\n\t\tPress 1 to register Participant details\n\t\tPress 2 to check your registration\n\t\tPress 3 to START THE GAME !!!\n\t\tPress 4 to view list of winners\n\t\tPress 5 to view Terms and Conditions\n\t\tPress 6 to exit");
+     printf("\n\t\t****************************************\n\n");
+
+       int val;
+       printf("\n\t\t\tEnter your choice : ");
+       scanf("%d",&val);
+       if(val==1)
+            add();
+       else if(val==2)
+            display();
+       else if(val==3)
+            game();
+       else if(val==4)
+            winners();
+       else if(val==5)
+            rule();
+       else
+        exit (0);
+       }
+}
+
+
+
+
