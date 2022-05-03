@@ -1,5 +1,6 @@
 package miniproject;
 import java.io.*;
+import java.util.Objects;
 import java.util.Scanner;
 import java.security.SecureRandom;
 import java.lang.String;
@@ -24,13 +25,32 @@ class UpiPaymentChild extends UpiPayment{
                     int randomIndex = random.nextInt(chars.length());
                     sb.append(chars.charAt(randomIndex));
                 }
-
                 return sb.toString();
             }
+}
 
-
+abstract class MobileWallet{
+   public MobileWallet(){
+       System.out.println("\tMobile Wallets !!");
+   }
+   public abstract String generateCapcha();
+}
+class MobileWalletChild extends MobileWallet{
+public String generateCapcha(){
+    final String chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+    SecureRandom random = new SecureRandom();
+    StringBuilder sb = new StringBuilder();
+    for (int j = 0; j < 4; j++) {
+        int randomIndex = random.nextInt(chars.length());
+        sb.append(chars.charAt(randomIndex));
+    }
+    return sb.toString();
+}
 
 }
+
+
+
 
 
 abstract class InfoToClient{
@@ -108,8 +128,8 @@ public class MyMainClass {
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             }
-            System.out.println(user+"\t");
-            System.out.println(pass);
+//            System.out.println(user+"\t");
+//            System.out.println(pass);
 
             if (user.contains(username) && pass.contains(password)) {
                 System.out.println("\tAuthentication successful");
@@ -118,6 +138,7 @@ public class MyMainClass {
                 System.out.println("\tEnter your choice");
                 System.out.print("\t");
                 int choice = sc.nextInt();
+
                 if (choice == 1) {
                     UpiPayment up = new UpiPaymentChild();
                     System.out.print("\t");
@@ -128,6 +149,40 @@ public class MyMainClass {
                     String id = up.TransactionId();
 
                     System.out.println("\tThe Transaction was successful \n\tThe amount of \u20B9" + amt + " has been transferred via Transaction Id " + id);
+                }
+                else if(choice==4) {
+                    MobileWallet mw = new MobileWalletChild();
+                    System.out.println("\tEnter Amount");
+                    System.out.print("\t");
+                    int amt = sc.nextInt();
+                    sc.nextLine();
+                    System.out.println("\t");
+                    int i = 1;
+                    while (i == 1) {
+                        System.out.println("\tEnter the capcha shown below");
+                        System.out.print("\t");
+                        String cap = mw.generateCapcha();
+                        System.out.println(cap);
+                        System.out.print("\t");
+                        String take = sc.nextLine();
+
+                        if (!cap.equals(take)) {
+                            System.out.println("\tTry Again?");
+                            System.out.print("\t");
+                            String ans = sc.nextLine();
+
+                            if (ans.equals("yes")) {
+                                i = 1;
+                            }
+                            else
+                                System.exit(0);
+
+                        }
+                        else
+                            i=0;
+
+                    }
+                    System.out.println("\tTransaction Successful");
                 }
 
 
@@ -172,5 +227,8 @@ public class MyMainClass {
             else{
                 System.out.println("\tWrong Option Chosen");
             }
+
+
+
     }
 }
