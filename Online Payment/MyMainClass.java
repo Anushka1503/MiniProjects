@@ -172,8 +172,5 @@ public class MyMainClass {
             else{
                 System.out.println("\tWrong Option Chosen");
             }
-
-
-
     }
 }
