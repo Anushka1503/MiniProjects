@@ -1,5 +1,6 @@
 package miniproject;
 import java.io.*;
+import java.sql.SQLOutput;
 import java.util.Objects;
 import java.util.Scanner;
 import java.security.SecureRandom;
@@ -48,7 +49,29 @@ public String generateCapcha(){
 }
 
 }
+abstract class BankingCards{
+    public BankingCards(){
+        System.out.println("\tBanking cards !!!");
+        System.out.println("\tChoose \n\t1.Debit Card\n\t2.Credit Cards");
 
+    }
+}
+class BankingCardsChild extends BankingCards{
+    public void otpgen(){
+        System.out.println("\tGenerating OTP...Please Wait");
+        try{Thread.sleep(2000);}catch(InterruptedException e){System.out.println(e);}
+    }
+    public String debitcard(){
+        final String chars = "0123456789";
+        SecureRandom random = new SecureRandom();
+        StringBuilder sb = new StringBuilder();
+        for (int j = 0; j < 4; j++) {
+            int randomIndex = random.nextInt(chars.length());
+            sb.append(chars.charAt(randomIndex));
+        }
+        return sb.toString();
+    }
+}
 
 
 
@@ -185,10 +208,110 @@ public class MyMainClass {
                     System.out.println("\tTransaction Successful");
                 }
 
+                else if(choice==3){
+                    BankingCardsChild bcc=new BankingCardsChild();
+                    System.out.print("\t");
+                    int ch=sc.nextInt();
+                    if(ch==1 ) {
+                        System.out.println("\tEnter Debit Card number");
+                        System.out.print("\t");
+                        int d = sc.nextInt();
+                        bcc.otpgen();
+                        int p = 1;
+                        int q=0;
+                        while (p == 1) {
+                            q++;
+                            System.out.println("\tenter the OTP");
+                            System.out.print("\t");
+                            String test = bcc.debitcard();
+                            System.out.println(test);
+                            System.out.print("\t");
+                            String otp = sc.next();
+
+                                if (q < 4) {
+                                    if (!Objects.equals(otp, test)) {
+                                        System.out.println("\tWrong OTP entered");
+                                        System.out.println("\tSend Again ? (yes/no)");
+                                        System.out.print("\t");
+                                        String a = sc.next();
+
+                                        if (Objects.equals(a, "yes")) {
+                                            p = 1;
+                                        }
+
+                                    }
+                                    else {
+                                        p=0;
+                                    }
+                                } else {
+                                    System.out.println("\tYou have exhausted your 3 trials.Try again later");
+                                    System.exit(0);
+                                }
+
+
+                        }
+                        System.out.println("\tEnter amount");
+                        System.out.print("\t");
+                        int am=sc.nextInt();
+                        System.out.println("\tProcessing Transaction....");
+                        try{Thread.sleep(3000);}catch(InterruptedException e){System.out.println(e);}
+                        System.out.println("\tYour transaction of "+ am+" was successful");
+                        System.exit(0);
+                    }
+                    if(ch==2){
+                        System.out.println("\tEnter Credit Card number");
+                        System.out.print("\t");
+                        int d = sc.nextInt();
+                        bcc.otpgen();
+                        int p = 1;
+                        int q=0;
+                        while (p == 1) {
+                            q++;
+                            System.out.println("\tenter the OTP");
+                            System.out.print("\t");
+                            String test = bcc.debitcard();
+                            System.out.println(test);
+                            System.out.print("\t");
+                            String otp = sc.next();
+
+                            if (q < 4) {
+                                if (!Objects.equals(otp, test)) {
+                                    System.out.println("\tWrong OTP entered");
+                                    System.out.println("\tSend Again ? (yes/no)");
+                                    System.out.print("\t");
+                                    String a = sc.next();
+
+                                    if (Objects.equals(a, "yes")) {
+                                        p = 1;
+                                    }
+
+                                }
+                                else {
+                                    p=0;
+                                }
+                            } else {
+                                System.out.println("\tYou have exhausted your 3 trials.Try again later");
+                                System.exit(0);
+                            }
+
+
+                        }
+                        System.out.println("\tEnter amount");
+                        System.out.print("\t");
+                        int am=sc.nextInt();
+                        System.out.println("\tProcessing Transaction....");
+                        try{Thread.sleep(3000);}catch(InterruptedException e){System.out.println(e);}
+                        System.out.println("\tYour transaction of "+ am+" was successful");
+                        System.exit(0);
+                    }
+                }
+
 
             } else {
                 System.out.println("\tAuthentication failed");
             }
+
+
 
         }
 
@@ -227,8 +350,5 @@ public class MyMainClass {
             else{
                 System.out.println("\tWrong Option Chosen");
             }
-
-
-
     }
 }
